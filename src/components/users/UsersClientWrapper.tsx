@@ -45,7 +45,7 @@ export function UsersClientWrapper({ initialUsers }: { initialUsers: DummyUser[]
     if (tag === '__reset__') { setSelectedTags(new Set()); return }
     setSelectedTags(prev => {
       const next = new Set(prev)
-      next.has(tag) ? next.delete(tag) : next.add(tag)
+      if (next.has(tag)) { next.delete(tag) } else { next.add(tag) }
       return next
     })
   }
