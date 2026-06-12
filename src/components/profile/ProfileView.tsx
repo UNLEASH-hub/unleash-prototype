@@ -607,6 +607,7 @@ const BLOCK_REASONS = [
 export function ProfileView({ profile }: { profile: Profile }) {
   const [activeTab, setActiveTab] = useState<'プロフィール' | 'スケジュール'>('プロフィール')
   const [isFavorite, setIsFavorite] = useState(false)
+  const [showFavoriteToast, setShowFavoriteToast] = useState(false)
   const [wantedIds, setWantedIds] = useState<Set<string>>(new Set())
   const [pendingWantId, setPendingWantId] = useState<string | null>(null)
   const [showSecretModal, setShowSecretModal] = useState(false)
@@ -929,6 +930,13 @@ export function ProfileView({ profile }: { profile: Profile }) {
         )
       })()}
 
+      {/* お気に入りトースト */}
+      {showFavoriteToast && (
+        <div className="fixed bottom-24 left-1/2 z-50 -translate-x-1/2 rounded-full bg-gray-800 px-5 py-2.5 text-sm font-semibold text-white shadow-lg">
+          お気に入りしました！
+        </div>
+      )}
+
       {/* アクションバー */}
       <div className="fixed bottom-0 left-1/2 z-10 w-full max-w-[390px] -translate-x-1/2 flex items-center gap-3 border-t border-gray-100 bg-white px-4 py-3">
         <Link
@@ -939,7 +947,14 @@ export function ProfileView({ profile }: { profile: Profile }) {
           メッセージを送る
         </Link>
         <button
-          onClick={() => setIsFavorite(f => !f)}
+          onClick={() => {
+            const next = !isFavorite
+            setIsFavorite(next)
+            if (next) {
+              setShowFavoriteToast(true)
+              setTimeout(() => setShowFavoriteToast(false), 2000)
+            }
+          }}
           className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full transition-colors"
           style={{ background: isFavorite ? '#F59E0B' : '#E5E7EB' }}
         >
