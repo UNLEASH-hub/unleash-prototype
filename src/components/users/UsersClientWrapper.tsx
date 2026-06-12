@@ -209,7 +209,7 @@ export function UsersClientWrapper({ initialUsers }: { initialUsers: DummyUser[]
       {/* スクロールエリア */}
       <div
         ref={scrollRef}
-        className="flex-1 overflow-y-scroll pb-16"
+        className="flex-1 overflow-y-scroll pb-16 bg-gray-100"
         style={{ overscrollBehavior: 'none' }}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
@@ -240,7 +240,7 @@ export function UsersClientWrapper({ initialUsers }: { initialUsers: DummyUser[]
             )}
           </div>
         ) : activeTab === '今日会いたい' ? (
-          <div className="divide-y divide-gray-100">
+          <div className="space-y-2 p-3">
             {visibleUsers.map(u => (
               <TodayUserRow
                 key={u.id}
@@ -251,7 +251,7 @@ export function UsersClientWrapper({ initialUsers }: { initialUsers: DummyUser[]
             ))}
           </div>
         ) : (
-          <div className="divide-y divide-gray-100">
+          <div className="space-y-2 p-3">
             {visibleUsers.map(u => (
               <NearbyUserRow key={u.id} user={u} />
             ))}

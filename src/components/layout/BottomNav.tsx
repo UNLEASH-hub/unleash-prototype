@@ -66,6 +66,7 @@ export function BottomNav() {
     <nav className="fixed bottom-0 left-1/2 z-50 flex w-full max-w-[390px] -translate-x-1/2 items-center justify-around border-t border-gray-100 bg-white px-2 pb-2 pt-2">
       {NAV_ITEMS.map(({ href, label, icon }) => {
         const active = pathname.startsWith(href)
+        const isSearch = href === '/users'
         return (
           <Link
             key={href}
@@ -73,15 +74,31 @@ export function BottomNav() {
             className="flex flex-col items-center gap-0.5 px-2 py-1"
           >
             <div className="relative">
-              {icon(active)}
-              {href === '/messages' && hasUnreadMessages && (
-                <span className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full bg-red-500 ring-2 ring-white" />
-              )}
-              {href === '/notifications' && hasUnreadNotifications && (
-                <span className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full bg-red-500 ring-2 ring-white" />
+              {isSearch ? (
+                <div
+                  className="flex h-12 w-12 items-center justify-center rounded-full"
+                  style={{ background: 'linear-gradient(135deg, #0EA5E9, #2563EB)' }}
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <circle cx="9" cy="7" r="3.5" stroke="white" strokeWidth="1.8" />
+                    <path d="M3 19c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
+                    <circle cx="17" cy="8" r="2.5" stroke="white" strokeWidth="1.6" />
+                    <path d="M14 19c0-2.21 1.343-4 3-4s3 1.79 3 4" stroke="white" strokeWidth="1.6" strokeLinecap="round" />
+                  </svg>
+                </div>
+              ) : (
+                <>
+                  {icon(active)}
+                  {href === '/messages' && hasUnreadMessages && (
+                    <span className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full bg-red-500 ring-2 ring-white" />
+                  )}
+                  {href === '/notifications' && hasUnreadNotifications && (
+                    <span className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full bg-red-500 ring-2 ring-white" />
+                  )}
+                </>
               )}
             </div>
-            <span className={`text-[10px] ${active ? 'text-sky-500' : 'text-gray-400'}`}>
+            <span className={`text-[10px] ${isSearch ? 'font-bold text-sky-500' : active ? 'text-sky-500' : 'text-gray-400'}`}>
               {label}
             </span>
           </Link>

@@ -58,12 +58,12 @@ export function MessagesListView() {
       </header>
 
       {/* 会話リスト */}
-      <main className="flex-1 pb-16">
+      <main className="flex-1 space-y-2 bg-gray-100 p-3 pb-16">
         {allConvs.map(conv => (
           <Link
             key={conv.id}
             href={`/messages/${conv.id}`}
-            className="flex items-center gap-3 border-b border-gray-100 px-4 py-4 active:bg-gray-50"
+            className="flex items-center gap-3 rounded-xl bg-white px-4 py-4 shadow-sm active:opacity-90"
           >
             {/* アバター */}
             <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg">

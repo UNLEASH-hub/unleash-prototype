@@ -35,7 +35,7 @@ type TodayRowProps = {
 
 export function TodayUserRow({ user, isWanted, onWantPress }: TodayRowProps) {
   return (
-    <div className="flex items-center gap-4 px-4 py-4">
+    <div className="flex items-center gap-4 rounded-xl bg-white px-4 py-4 shadow-sm">
       {/* アイコン */}
       <Link href={`/users/${user.id}`} className="flex-shrink-0">
         <div className="relative h-20 w-20 overflow-hidden rounded-lg"
@@ -116,7 +116,7 @@ export function NearbyUserRow({ user }: { user: DummyUser }) {
   const rowTags = [sexual, position, purpose].filter(Boolean) as string[]
 
   return (
-    <Link href={`/users/${user.id}`} className="flex items-center gap-4 px-4 py-4 active:bg-gray-50">
+    <Link href={`/users/${user.id}`} className="flex items-center gap-4 rounded-xl bg-white px-4 py-4 shadow-sm active:opacity-90">
       <div
         className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg"
         style={user.isPremium ? { outline: '2px solid #0EA5E9', outlineOffset: '-2px' } : {}}

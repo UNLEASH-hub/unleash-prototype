@@ -142,9 +142,9 @@ function ActionNotificationItem({ notif, isVIP }: { notif: ActionNotif; isVIP: b
   return (
     <div
       onClick={handleClick}
-      className={`flex gap-3 px-4 py-4 ${
+      className={`flex gap-3 mx-3 mt-2 rounded-xl px-4 py-4 shadow-sm ${
         !notif.isRead ? 'bg-sky-50' : 'bg-white'
-      } border-b border-gray-100 ${isReview ? 'cursor-pointer active:bg-amber-50' : ''}`}
+      } ${isReview ? 'cursor-pointer active:opacity-90' : ''}`}
     >
       {/* 未読インジケーター */}
       <div className="flex w-2 flex-shrink-0 items-start pt-4">
@@ -208,7 +208,7 @@ function ActionNotificationItem({ notif, isVIP }: { notif: ActionNotif; isVIP: b
 
 function FootprintItem({ fp, direction }: { fp: Footprint; direction: '相手から' | '自分から' }) {
   return (
-    <div className="flex items-center gap-3 border-b border-gray-100 px-4 py-4">
+    <div className="flex items-center gap-3 mx-3 mt-2 rounded-xl bg-white px-4 py-4 shadow-sm">
       <div className="flex w-2 flex-shrink-0" />
       <Avatar gradient={fp.avatarGradient} />
       <div className="min-w-0 flex-1">
@@ -322,7 +322,7 @@ export function NotificationsView() {
       </header>
 
       {/* コンテンツ */}
-      <main className="flex-1 pb-16">
+      <main className="flex-1 bg-gray-100 pb-16">
         {activeTab === 'お気に入り' ? (
           <div>
             {FAVORITE_USERS.length === 0 ? (
@@ -334,7 +334,7 @@ export function NotificationsView() {
                 <button
                   key={user.id}
                   onClick={() => router.push(`/users/${user.id}`)}
-                  className="flex w-full items-center gap-3 border-b border-gray-100 px-4 py-4 active:bg-gray-50"
+                  className="flex w-full items-center gap-3 mx-3 mt-2 w-[calc(100%-1.5rem)] rounded-xl bg-white px-4 py-4 shadow-sm active:opacity-90"
                 >
                   <div
                     className="relative flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-lg"
@@ -363,7 +363,7 @@ export function NotificationsView() {
           <div>
             {/* 会いたい受信（pending） */}
             {pendingRequests.map(req => (
-              <div key={req.id} className="flex gap-3 px-4 py-4 bg-red-50 border-b border-gray-100">
+              <div key={req.id} className="flex gap-3 mx-3 mt-2 rounded-xl bg-red-50 px-4 py-4 shadow-sm">
                 <div className="flex w-2 flex-shrink-0 items-start pt-4">
                   <div className="h-2 w-2 rounded-full bg-red-400" />
                 </div>
