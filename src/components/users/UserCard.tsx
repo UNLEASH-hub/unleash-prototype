@@ -35,7 +35,7 @@ export function TodayUserRow({ user, isWanted, onWantPress }: TodayRowProps) {
     <div className="flex items-center gap-3 px-3 py-3">
       {/* アイコン */}
       <Link href={`/users/${user.id}`} className="flex-shrink-0">
-        <div className="relative h-11 w-11 overflow-hidden rounded-full"
+        <div className="relative h-11 w-11 overflow-hidden rounded-lg"
           style={user.isPremium ? { outline: '2px solid #0EA5E9', outlineOffset: '-2px' } : {}}>
           {user.hasPhoto ? (
             <img src={`/images/users/${user.id}.jpg`} alt="" className="absolute inset-0 h-full w-full object-cover" />
