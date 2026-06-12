@@ -11,6 +11,9 @@ export type DummyUser = {
   photoGradient?: { from: string; to: string }
   tags: string[]
   scheduleToday?: { time: string; place: string; purpose: string }
+  height: number
+  weight: number
+  age: number
 }
 
 function PersonPlaceholder() {
@@ -95,6 +98,66 @@ export function TodayUserRow({ user, isWanted, onWantPress }: TodayRowProps) {
         <span className={`text-[10px] font-semibold ${isWanted ? 'text-red-400' : 'text-gray-400'}`}>会いたい</span>
       </button>
     </div>
+  )
+}
+
+const SEXUAL_TAGS = ['ゲイ', 'バイ']
+const POSITION_TAGS = ['タチ', 'ウケ', 'リバ']
+const PURPOSE_TAGS = ['ヤリモク', 'バニラ派', 'サウナ好き', '場所あり', '足あり', 'Prep服用']
+
+function pickTag(tags: string[], candidates: string[]): string | null {
+  return candidates.find(c => tags.includes(c)) ?? null
+}
+
+export function NearbyUserRow({ user }: { user: DummyUser }) {
+  const sexual = pickTag(user.tags, SEXUAL_TAGS)
+  const position = pickTag(user.tags, POSITION_TAGS)
+  const purpose = pickTag(user.tags, PURPOSE_TAGS)
+  const rowTags = [sexual, position, purpose].filter(Boolean) as string[]
+
+  return (
+    <Link href={`/users/${user.id}`} className="flex items-center gap-4 px-4 py-4 active:bg-gray-50">
+      <div
+        className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg"
+        style={user.isPremium ? { outline: '2px solid #0EA5E9', outlineOffset: '-2px' } : {}}
+      >
+        {user.hasPhoto ? (
+          <img src={`/images/users/${user.id}.jpg`} alt="" className="absolute inset-0 h-full w-full object-cover" />
+        ) : user.photoGradient ? (
+          <div className="absolute inset-0"
+            style={{ background: `linear-gradient(135deg, ${user.photoGradient.from}, ${user.photoGradient.to})` }} />
+        ) : (
+          <div className="absolute inset-0" style={{ background: '#4ECDC4' }}>
+            <svg viewBox="0 0 80 80" className="w-full h-full absolute inset-0" preserveAspectRatio="xMidYMid meet">
+              <circle cx="40" cy="28" r="16" fill="rgba(255,255,255,0.45)" />
+              <ellipse cx="40" cy="75" rx="26" ry="18" fill="rgba(255,255,255,0.45)" />
+            </svg>
+          </div>
+        )}
+      </div>
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center justify-between gap-2">
+          <p className="text-base font-bold text-gray-800 truncate">{user.name}</p>
+          <div className="flex flex-shrink-0 items-center gap-1 text-sm text-gray-400">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" strokeWidth="1.8" />
+              <circle cx="12" cy="9" r="2.5" stroke="currentColor" strokeWidth="1.6" />
+            </svg>
+            {user.distance}
+          </div>
+        </div>
+        <p className="mt-1 text-sm text-gray-500">{user.height}cm / {user.weight}kg / {user.age}歳</p>
+        {rowTags.length > 0 && (
+          <div className="mt-1.5 flex flex-wrap gap-1.5">
+            {rowTags.map(tag => (
+              <span key={tag} className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-semibold text-gray-600">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    </Link>
   )
 }
 

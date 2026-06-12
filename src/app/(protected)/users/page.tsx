@@ -60,17 +60,23 @@ function getScheduleToday(i: number): { time: string; place: string; purpose: st
   }
 }
 
-const DUMMY_USERS: DummyUser[] = Array.from({ length: 100 }, (_, i) => ({
-  id: String(i + 1),
-  name: getUserName(i),
-  distance: generateDistance(i),
-  ...getUserCoords(i),
-  isPremium: [2, 5, 9, 14, 20, 27, 35, 44, 55, 68].includes(i),
-  hasPhoto: i < 4,
-  photoGradient: i < 5 ? PHOTO_GRADIENTS[i % PHOTO_GRADIENTS.length] : undefined,
-  tags: getUserTags(i),
-  scheduleToday: getScheduleToday(i),
-}))
+const DUMMY_USERS: DummyUser[] = Array.from({ length: 100 }, (_, i) => {
+  const n = i + 1
+  return {
+    id: String(n),
+    name: getUserName(i),
+    distance: generateDistance(i),
+    ...getUserCoords(i),
+    isPremium: [2, 5, 9, 14, 20, 27, 35, 44, 55, 68].includes(i),
+    hasPhoto: i < 4,
+    photoGradient: i < 5 ? PHOTO_GRADIENTS[i % PHOTO_GRADIENTS.length] : undefined,
+    tags: getUserTags(i),
+    scheduleToday: getScheduleToday(i),
+    height: 165 + (n * 3 % 20),
+    weight: 55 + (n * 5 % 25),
+    age: 20 + (n * 7 % 15),
+  }
+})
 
 export default async function UsersPage() {
   return (

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useCallback, useEffect } from 'react'
-import { UserCard, TodayUserRow, type DummyUser } from './UserCard'
+import { UserCard, TodayUserRow, NearbyUserRow, type DummyUser } from './UserCard'
 import { UsersHeader, type TabType } from './UsersHeader'
 import { LocationPickerModal } from './LocationPickerModal'
 import { haversineKm, formatDistance } from '@/utils/distance'
@@ -251,9 +251,9 @@ export function UsersClientWrapper({ initialUsers }: { initialUsers: DummyUser[]
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-3 gap-[1px] bg-gray-200">
+          <div className="divide-y divide-gray-100">
             {visibleUsers.map(u => (
-              <UserCard key={u.id} user={u} />
+              <NearbyUserRow key={u.id} user={u} />
             ))}
           </div>
         )}
