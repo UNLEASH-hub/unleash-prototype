@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useCallback, useEffect } from 'react'
-import { UserCard, TodayUserRow, NearbyUserRow, type DummyUser } from './UserCard'
+import { TodayUserRow, NearbyUserRow, type DummyUser } from './UserCard'
 import { UsersHeader, type TabType } from './UsersHeader'
 import { LocationPickerModal } from './LocationPickerModal'
 import { haversineKm, formatDistance } from '@/utils/distance'
