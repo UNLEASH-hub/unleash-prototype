@@ -35,10 +35,10 @@ type TodayRowProps = {
 
 export function TodayUserRow({ user, isWanted, onWantPress }: TodayRowProps) {
   return (
-    <div className="flex items-center gap-3 px-3 py-3">
+    <div className="flex items-center gap-4 px-4 py-4">
       {/* アイコン */}
       <Link href={`/users/${user.id}`} className="flex-shrink-0">
-        <div className="relative h-11 w-11 overflow-hidden rounded-lg"
+        <div className="relative h-20 w-20 overflow-hidden rounded-lg"
           style={user.isPremium ? { outline: '2px solid #0EA5E9', outlineOffset: '-2px' } : {}}>
           {user.hasPhoto ? (
             <img src={`/images/users/${user.id}.jpg`} alt="" className="absolute inset-0 h-full w-full object-cover" />
@@ -58,18 +58,18 @@ export function TodayUserRow({ user, isWanted, onWantPress }: TodayRowProps) {
 
       {/* 中央: 名前 / 時間・場所 / purpose */}
       <div className="flex-1 min-w-0">
-        <p className="text-sm font-bold text-gray-800 truncate">{user.name}</p>
+        <p className="text-base font-bold text-gray-800 truncate">{user.name}</p>
         {user.scheduleToday && (
           <>
-            <div className="mt-0.5 flex items-center gap-2">
-              <span className="flex items-center gap-0.5 text-xs text-gray-500">
+            <div className="mt-1 flex items-center gap-2">
+              <span className="flex items-center gap-0.5 text-sm text-gray-500">
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none">
                   <circle cx="12" cy="12" r="9" stroke="#9CA3AF" strokeWidth="1.8" />
                   <path d="M12 7v5l3 3" stroke="#9CA3AF" strokeWidth="1.8" strokeLinecap="round" />
                 </svg>
                 {user.scheduleToday.time}〜
               </span>
-              <span className="flex items-center gap-0.5 text-xs text-gray-500">
+              <span className="flex items-center gap-0.5 text-sm text-gray-500">
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none">
                   <path d="M12 2C8.686 2 6 4.686 6 8c0 4.418 6 12 6 12s6-7.582 6-12c0-3.314-2.686-6-6-6z" stroke="#9CA3AF" strokeWidth="1.8" />
                   <circle cx="12" cy="8" r="2" stroke="#9CA3AF" strokeWidth="1.6" />
@@ -77,7 +77,7 @@ export function TodayUserRow({ user, isWanted, onWantPress }: TodayRowProps) {
                 {user.scheduleToday.place}
               </span>
             </div>
-            <span className="mt-1 inline-block rounded-full bg-sky-50 px-2 py-0.5 text-[10px] font-semibold text-sky-600">
+            <span className="mt-1.5 inline-block rounded-full bg-sky-50 px-2.5 py-0.5 text-xs font-semibold text-sky-600">
               {user.scheduleToday.purpose}
             </span>
           </>
@@ -87,15 +87,15 @@ export function TodayUserRow({ user, isWanted, onWantPress }: TodayRowProps) {
       {/* 会いたいボタン */}
       <button
         onClick={onWantPress}
-        className={`flex flex-shrink-0 flex-col items-center gap-0.5 rounded-xl px-3 py-2 transition-colors ${
+        className={`flex flex-shrink-0 flex-col items-center gap-0.5 rounded-xl px-3 py-2.5 transition-colors ${
           isWanted ? 'bg-red-50' : 'bg-gray-100 active:bg-gray-200'
         }`}
       >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill={isWanted ? '#EF4444' : 'none'}>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill={isWanted ? '#EF4444' : 'none'}>
           <path d="M12 21C12 21 3 13.5 3 7.5C3 5.01 5.01 3 7.5 3C9.24 3 10.91 4.01 12 5.5C13.09 4.01 14.76 3 16.5 3C18.99 3 21 5.01 21 7.5C21 13.5 12 21 12 21Z"
             stroke={isWanted ? '#EF4444' : '#9CA3AF'} strokeWidth="1.8" strokeLinejoin="round" />
         </svg>
-        <span className={`text-[10px] font-semibold ${isWanted ? 'text-red-400' : 'text-gray-400'}`}>会いたい</span>
+        <span className={`text-xs font-semibold ${isWanted ? 'text-red-400' : 'text-gray-400'}`}>会いたい</span>
       </button>
     </div>
   )

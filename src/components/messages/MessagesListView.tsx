@@ -63,7 +63,7 @@ export function MessagesListView() {
           <Link
             key={conv.id}
             href={`/messages/${conv.id}`}
-            className="flex items-center gap-3 border-b border-gray-100 px-4 py-3 active:bg-gray-50"
+            className="flex items-center gap-3 border-b border-gray-100 px-4 py-4 active:bg-gray-50"
           >
             {/* アバター */}
             <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg">
@@ -72,7 +72,7 @@ export function MessagesListView() {
 
             {/* ユーザー情報 */}
             <div className="min-w-0 flex-1">
-              <p className="text-sm font-bold text-gray-800">{conv.username}</p>
+              <p className="text-base font-bold text-gray-800">{conv.username}</p>
               {conv.autoCreated ? (
                 <p className="mt-0.5 truncate text-xs text-sky-500">{conv.lastMessage}</p>
               ) : (

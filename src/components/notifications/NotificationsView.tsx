@@ -69,7 +69,7 @@ function Avatar({
 }) {
   return (
     <div
-      className="relative flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full"
+      className="relative flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-lg"
       style={{ background: `linear-gradient(135deg, ${gradient.from}, ${gradient.to})` }}
     >
       {locked ? (
@@ -142,7 +142,7 @@ function ActionNotificationItem({ notif, isVIP }: { notif: ActionNotif; isVIP: b
   return (
     <div
       onClick={handleClick}
-      className={`flex gap-3 px-4 py-3.5 ${
+      className={`flex gap-3 px-4 py-4 ${
         !notif.isRead ? 'bg-sky-50' : 'bg-white'
       } border-b border-gray-100 ${isReview ? 'cursor-pointer active:bg-amber-50' : ''}`}
     >
@@ -155,7 +155,7 @@ function ActionNotificationItem({ notif, isVIP }: { notif: ActionNotif; isVIP: b
 
       {isReview ? (
         <div
-          className="relative flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full"
+          className="relative flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-lg"
           style={{ background: 'linear-gradient(135deg, #F59E0B, #D97706)' }}
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
@@ -208,12 +208,12 @@ function ActionNotificationItem({ notif, isVIP }: { notif: ActionNotif; isVIP: b
 
 function FootprintItem({ fp, direction }: { fp: Footprint; direction: '相手から' | '自分から' }) {
   return (
-    <div className="flex items-center gap-3 border-b border-gray-100 px-4 py-3.5">
+    <div className="flex items-center gap-3 border-b border-gray-100 px-4 py-4">
       <div className="flex w-2 flex-shrink-0" />
       <Avatar gradient={fp.avatarGradient} />
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-2">
-          <p className="text-sm font-semibold text-gray-800">{fp.username}さん</p>
+          <p className="text-base font-semibold text-gray-800">{fp.username}さん</p>
           {direction === '自分から' && fp.mutual && (
             <span className="rounded-full bg-sky-100 px-1.5 py-0.5 text-[10px] font-semibold text-sky-600">
               相互
@@ -334,10 +334,10 @@ export function NotificationsView() {
                 <button
                   key={user.id}
                   onClick={() => router.push(`/users/${user.id}`)}
-                  className="flex w-full items-center gap-3 border-b border-gray-100 px-4 py-3.5 active:bg-gray-50"
+                  className="flex w-full items-center gap-3 border-b border-gray-100 px-4 py-4 active:bg-gray-50"
                 >
                   <div
-                    className="relative flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full"
+                    className="relative flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-lg"
                     style={{ background: `linear-gradient(135deg, ${user.avatarGradient.from}, ${user.avatarGradient.to})` }}
                   >
                     <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none">
@@ -346,8 +346,8 @@ export function NotificationsView() {
                     </svg>
                   </div>
                   <div className="min-w-0 flex-1 text-left">
-                    <p className="text-sm font-bold text-gray-800">{user.username}</p>
-                    <p className="text-xs text-gray-400">{user.height}cm / {user.weight}kg / {user.age}歳</p>
+                    <p className="text-base font-bold text-gray-800">{user.username}</p>
+                    <p className="text-sm text-gray-400">{user.height}cm / {user.weight}kg / {user.age}歳</p>
                   </div>
                   <div className="flex flex-shrink-0 flex-col items-end gap-1">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B">
@@ -363,12 +363,12 @@ export function NotificationsView() {
           <div>
             {/* 会いたい受信（pending） */}
             {pendingRequests.map(req => (
-              <div key={req.id} className="flex gap-3 px-4 py-3.5 bg-red-50 border-b border-gray-100">
+              <div key={req.id} className="flex gap-3 px-4 py-4 bg-red-50 border-b border-gray-100">
                 <div className="flex w-2 flex-shrink-0 items-start pt-4">
                   <div className="h-2 w-2 rounded-full bg-red-400" />
                 </div>
                 <div
-                  className="relative flex h-12 w-12 flex-shrink-0 items-center justify-center overflow-hidden rounded-full"
+                  className="relative flex h-14 w-14 flex-shrink-0 items-center justify-center overflow-hidden rounded-lg"
                   style={{ background: req.toUserGradient ? `linear-gradient(135deg, ${req.toUserGradient.from}, ${req.toUserGradient.to})` : '#4ECDC4' }}
                 >
                   {isVIP ? (

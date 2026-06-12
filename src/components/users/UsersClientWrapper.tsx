@@ -59,7 +59,7 @@ export function UsersClientWrapper({ initialUsers }: { initialUsers: DummyUser[]
     ? users.map(u => ({ ...u, _km: haversineKm(searchCenter.lat, searchCenter.lng, u.lat, u.lng) }))
     : null
 
-  const visibleUsers = activeTab === '今日会える'
+  const visibleUsers = activeTab === '今日会いたい'
     ? users.filter(u => u.scheduleToday)
     : searchCenter && usersWithDistance
       ? usersWithDistance
@@ -227,7 +227,7 @@ export function UsersClientWrapper({ initialUsers }: { initialUsers: DummyUser[]
                 <path d="M16.5 16.5L21 21" stroke="#9CA3AF" strokeWidth="1.8" strokeLinecap="round" />
               </svg>
             </div>
-            {activeTab === '今日会える' ? (
+            {activeTab === '今日会いたい' ? (
               <>
                 <p className="text-sm font-semibold text-gray-500">今日の募集がありません</p>
                 <p className="mt-1 text-xs text-gray-400">また後で確認してみてください</p>
@@ -239,7 +239,7 @@ export function UsersClientWrapper({ initialUsers }: { initialUsers: DummyUser[]
               </>
             )}
           </div>
-        ) : activeTab === '今日会える' ? (
+        ) : activeTab === '今日会いたい' ? (
           <div className="divide-y divide-gray-100">
             {visibleUsers.map(u => (
               <TodayUserRow

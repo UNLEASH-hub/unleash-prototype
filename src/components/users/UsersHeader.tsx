@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { BADGE_CATEGORIES } from '@/lib/badges-data'
 
-export const TABS = ['付近を検索', 'バッジ検索', '今日会える'] as const
+export const TABS = ['付近を検索', 'バッジ検索', '今日会いたい'] as const
 export type TabType = typeof TABS[number]
 
 type Props = {
