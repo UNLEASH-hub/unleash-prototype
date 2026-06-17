@@ -12,8 +12,9 @@ type Footprint = {
   id: string
   username: string
   avatarGradient: { from: string; to: string }
+  photoId?: string
   timestamp: string
-  mutual?: boolean  // 自分からの場合: 相手も自分を見ているか
+  mutual?: boolean
 }
 
 const FOOTPRINT_TABS = ['相手から', '自分から'] as const
@@ -22,6 +23,7 @@ type FavoriteUser = {
   id: string
   username: string
   avatarGradient: { from: string; to: string }
+  photoId?: string
   height: number
   weight: number
   age: number
@@ -29,44 +31,53 @@ type FavoriteUser = {
 }
 
 const FAVORITE_USERS: FavoriteUser[] = [
-  { id: '1', username: '知也',   avatarGradient: { from: '#F4A261', to: '#E76F51' }, height: 175, weight: 65, age: 28, timestamp: '1時間前' },
-  { id: '2', username: 'Kenji',  avatarGradient: { from: '#2A9D8F', to: '#264653' }, height: 170, weight: 60, age: 25, timestamp: '昨日' },
-  { id: '3', username: 'Takashi', avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, height: 178, weight: 70, age: 30, timestamp: '2日前' },
-  { id: '4', username: 'Sho',    avatarGradient: { from: '#4CC9F0', to: '#4361EE' }, height: 168, weight: 58, age: 22, timestamp: '3日前' },
-  { id: '5', username: 'Ryo',    avatarGradient: { from: '#F72585', to: '#7209B7' }, height: 172, weight: 63, age: 27, timestamp: '4日前' },
+  { id: '1', username: '知也',    avatarGradient: { from: '#F4A261', to: '#E76F51' }, photoId: '1', height: 175, weight: 65, age: 28, timestamp: '1時間前' },
+  { id: '2', username: 'Kenji',   avatarGradient: { from: '#2A9D8F', to: '#264653' }, photoId: '2', height: 170, weight: 60, age: 25, timestamp: '昨日' },
+  { id: '3', username: 'Takashi', avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, photoId: '3', height: 178, weight: 70, age: 30, timestamp: '2日前' },
+  { id: '4', username: 'Sho',     avatarGradient: { from: '#4CC9F0', to: '#4361EE' }, photoId: '4', height: 168, weight: 58, age: 22, timestamp: '3日前' },
+  { id: '5', username: 'Ryo',     avatarGradient: { from: '#F72585', to: '#7209B7' }, photoId: '5', height: 172, weight: 63, age: 27, timestamp: '4日前' },
 ]
 
 const FOOTPRINTS_FROM_OTHERS: Footprint[] = [
-  { id: '1', username: 'Ryo', avatarGradient: { from: '#F4A261', to: '#E76F51' }, timestamp: '10分前' },
-  { id: '2', username: 'Hiro', avatarGradient: { from: '#2A9D8F', to: '#264653' }, timestamp: '1時間前' },
-  { id: '3', username: 'Sho', avatarGradient: { from: '#4CC9F0', to: '#4361EE' }, timestamp: '2時間前' },
-  { id: '4', username: 'Yuki', avatarGradient: { from: '#F72585', to: '#7209B7' }, timestamp: '3時間前' },
-  { id: '5', username: 'Ken', avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, timestamp: '5時間前' },
-  { id: '6', username: 'Daiki', avatarGradient: { from: '#F4A261', to: '#E76F51' }, timestamp: '昨日' },
-  { id: '7', username: 'Masa', avatarGradient: { from: '#2A9D8F', to: '#264653' }, timestamp: '昨日' },
-  { id: '8', username: 'Taro', avatarGradient: { from: '#4CC9F0', to: '#4361EE' }, timestamp: '2日前' },
-  { id: '9', username: 'Jun', avatarGradient: { from: '#F72585', to: '#7209B7' }, timestamp: '2日前' },
-  { id: '10', username: 'Shin', avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, timestamp: '3日前' },
+  { id: '1',  username: 'Ryo',   avatarGradient: { from: '#F4A261', to: '#E76F51' }, photoId: '5', timestamp: '10分前' },
+  { id: '2',  username: 'Hiro',  avatarGradient: { from: '#2A9D8F', to: '#264653' }, photoId: '6', timestamp: '1時間前' },
+  { id: '3',  username: 'Sho',   avatarGradient: { from: '#4CC9F0', to: '#4361EE' }, photoId: '4', timestamp: '2時間前' },
+  { id: '4',  username: 'Yuki',  avatarGradient: { from: '#F72585', to: '#7209B7' }, photoId: '3', timestamp: '3時間前' },
+  { id: '5',  username: 'Ken',   avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, photoId: '7', timestamp: '5時間前' },
+  { id: '6',  username: 'Daiki', avatarGradient: { from: '#F4A261', to: '#E76F51' }, photoId: '2', timestamp: '昨日' },
+  { id: '7',  username: 'Masa',  avatarGradient: { from: '#2A9D8F', to: '#264653' }, timestamp: '昨日' },
+  { id: '8',  username: 'Taro',  avatarGradient: { from: '#4CC9F0', to: '#4361EE' }, timestamp: '2日前' },
+  { id: '9',  username: 'Jun',   avatarGradient: { from: '#F72585', to: '#7209B7' }, timestamp: '2日前' },
+  { id: '10', username: 'Shin',  avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, timestamp: '3日前' },
 ]
 
 const FOOTPRINTS_FROM_ME: Footprint[] = [
-  { id: '1', username: 'Kenji', avatarGradient: { from: '#2A9D8F', to: '#264653' }, timestamp: '20分前', mutual: true },
-  { id: '2', username: 'Takashi', avatarGradient: { from: '#F72585', to: '#7209B7' }, timestamp: '1時間前', mutual: false },
-  { id: '3', username: 'Ryota', avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, timestamp: '2時間前', mutual: true },
-  { id: '4', username: 'Naoto', avatarGradient: { from: '#4CC9F0', to: '#4361EE' }, timestamp: '4時間前', mutual: false },
-  { id: '5', username: 'Kota', avatarGradient: { from: '#F4A261', to: '#E76F51' }, timestamp: '昨日', mutual: false },
-  { id: '6', username: 'Shun', avatarGradient: { from: '#2A9D8F', to: '#264653' }, timestamp: '昨日', mutual: true },
-  { id: '7', username: 'Ren', avatarGradient: { from: '#F72585', to: '#7209B7' }, timestamp: '2日前', mutual: false },
-  { id: '8', username: 'Yuto', avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, timestamp: '3日前', mutual: false },
+  { id: '1', username: 'Kenji',   avatarGradient: { from: '#2A9D8F', to: '#264653' }, photoId: '2', timestamp: '20分前', mutual: true },
+  { id: '2', username: 'Takashi', avatarGradient: { from: '#F72585', to: '#7209B7' }, photoId: '7', timestamp: '1時間前', mutual: false },
+  { id: '3', username: 'Ryota',   avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, photoId: '5', timestamp: '2時間前', mutual: true },
+  { id: '4', username: 'Naoto',   avatarGradient: { from: '#4CC9F0', to: '#4361EE' }, photoId: '3', timestamp: '4時間前', mutual: false },
+  { id: '5', username: 'Kota',    avatarGradient: { from: '#F4A261', to: '#E76F51' }, timestamp: '昨日', mutual: false },
+  { id: '6', username: 'Shun',    avatarGradient: { from: '#2A9D8F', to: '#264653' }, timestamp: '昨日', mutual: true },
+  { id: '7', username: 'Ren',     avatarGradient: { from: '#F72585', to: '#7209B7' }, timestamp: '2日前', mutual: false },
+  { id: '8', username: 'Yuto',    avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, timestamp: '3日前', mutual: false },
 ]
 
 function Avatar({
   gradient,
   locked = false,
+  photoId,
 }: {
   gradient: { from: string; to: string }
   locked?: boolean
+  photoId?: string
 }) {
+  if (photoId && !locked) {
+    return (
+      <div className="relative h-14 w-14 flex-shrink-0 overflow-hidden rounded-lg">
+        <img src={`/images/users/${photoId}.jpg`} alt="" className="absolute inset-0 h-full w-full object-cover" />
+      </div>
+    )
+  }
   return (
     <div
       className="relative flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-lg"
@@ -163,7 +174,7 @@ function ActionNotificationItem({ notif, isVIP }: { notif: ActionNotif; isVIP: b
           </svg>
         </div>
       ) : (
-        <Avatar gradient={notif.avatarGradient} locked={locked} />
+        <Avatar gradient={notif.avatarGradient} locked={locked} photoId={notif.photoId} />
       )}
 
       <div className="min-w-0 flex-1">
@@ -210,7 +221,7 @@ function FootprintItem({ fp, direction }: { fp: Footprint; direction: '相手か
   return (
     <div className="flex items-center gap-3 mx-3 mt-2 rounded-xl bg-white px-4 py-4 shadow-sm">
       <div className="flex w-2 flex-shrink-0" />
-      <Avatar gradient={fp.avatarGradient} />
+      <Avatar gradient={fp.avatarGradient} photoId={fp.photoId} />
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-2">
           <p className="text-base font-semibold text-gray-800">{fp.username}さん</p>
@@ -336,15 +347,7 @@ export function NotificationsView() {
                   onClick={() => router.push(`/users/${user.id}`)}
                   className="flex w-full items-center gap-3 mx-3 mt-2 w-[calc(100%-1.5rem)] rounded-xl bg-white px-4 py-4 shadow-sm active:opacity-90"
                 >
-                  <div
-                    className="relative flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-lg"
-                    style={{ background: `linear-gradient(135deg, ${user.avatarGradient.from}, ${user.avatarGradient.to})` }}
-                  >
-                    <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none">
-                      <circle cx="12" cy="8" r="4" fill="rgba(255,255,255,0.7)" />
-                      <path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" fill="rgba(255,255,255,0.7)" />
-                    </svg>
-                  </div>
+                  <Avatar gradient={user.avatarGradient} photoId={user.photoId} />
                   <div className="min-w-0 flex-1 text-left">
                     <p className="text-base font-bold text-gray-800">{user.username}</p>
                     <p className="text-sm text-gray-400">{user.height}cm / {user.weight}kg / {user.age}歳</p>
