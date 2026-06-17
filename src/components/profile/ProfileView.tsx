@@ -342,14 +342,49 @@ const REVIEW_OPTIONS = [
   'イケメンだった',
   '可愛かった',
   '上手だった',
+  '最高だった！',
 ]
 
 // プロトタイプ用：レビュワー自身のダミースタッツ
 const MY_STATS = { height: 175, weight: 65, age: 28 }
 
+const SAMPLE_REVIEWS: Record<string, Review[]> = {
+  '1': [
+    { id: 's1', text: 'また会いたい',         height: 170, weight: 60, age: 25 },
+    { id: 's2', text: 'プロフィール通りだった', height: 178, weight: 72, age: 31 },
+    { id: 's3', text: 'イケメンだった',         height: 168, weight: 58, age: 24 },
+  ],
+  '2': [
+    { id: 's1', text: '会話が楽しかった',       height: 175, weight: 65, age: 28 },
+    { id: 's2', text: '時間通りに来た',         height: 172, weight: 63, age: 27 },
+  ],
+  '3': [
+    { id: 's1', text: '最高だった！',           height: 168, weight: 58, age: 22 },
+    { id: 's2', text: 'また会いたい',           height: 170, weight: 60, age: 25 },
+    { id: 's3', text: '上手だった',             height: 175, weight: 65, age: 28 },
+  ],
+  '4': [
+    { id: 's1', text: 'プロフィール通りだった', height: 180, weight: 75, age: 33 },
+    { id: 's2', text: '可愛かった',             height: 172, weight: 63, age: 27 },
+  ],
+  '5': [
+    { id: 's1', text: 'イケメンだった',         height: 178, weight: 72, age: 31 },
+    { id: 's2', text: '会話が楽しかった',       height: 168, weight: 58, age: 24 },
+    { id: 's3', text: '最高だった！',           height: 170, weight: 60, age: 25 },
+  ],
+  '6': [
+    { id: 's1', text: '時間通りに来た',         height: 175, weight: 65, age: 28 },
+    { id: 's2', text: 'また会いたい',           height: 168, weight: 58, age: 22 },
+  ],
+}
+
 function getReviews(profileId: string): Review[] {
-  if (typeof window === 'undefined') return []
-  try { return JSON.parse(localStorage.getItem(`reviews_${profileId}`) ?? '[]') } catch { return [] }
+  const sample = SAMPLE_REVIEWS[profileId] ?? []
+  if (typeof window === 'undefined') return sample
+  try {
+    const stored: Review[] = JSON.parse(localStorage.getItem(`reviews_${profileId}`) ?? '[]')
+    return [...sample, ...stored]
+  } catch { return sample }
 }
 
 function saveReview(profileId: string, review: Review) {

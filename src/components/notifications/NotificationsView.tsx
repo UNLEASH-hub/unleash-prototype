@@ -335,7 +335,7 @@ export function NotificationsView() {
       {/* コンテンツ */}
       <main className="flex-1 bg-gray-100 pb-16">
         {activeTab === 'お気に入り' ? (
-          <div>
+          <div className="flex flex-col gap-2 px-3 pt-2">
             {FAVORITE_USERS.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-24 text-center">
                 <p className="text-sm font-semibold text-gray-500">お気に入りはありません</p>
@@ -345,7 +345,7 @@ export function NotificationsView() {
                 <button
                   key={user.id}
                   onClick={() => router.push(`/users/${user.id}`)}
-                  className="flex w-full items-center gap-3 mx-3 mt-2 w-[calc(100%-1.5rem)] rounded-xl bg-white px-4 py-4 shadow-sm active:opacity-90"
+                  className="flex w-full items-center gap-3 rounded-xl bg-white px-4 py-4 shadow-sm active:opacity-90"
                 >
                   <Avatar gradient={user.avatarGradient} photoId={user.photoId} />
                   <div className="min-w-0 flex-1 text-left">
