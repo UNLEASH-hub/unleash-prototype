@@ -13,6 +13,9 @@ type Footprint = {
   username: string
   avatarGradient: { from: string; to: string }
   photoId?: string
+  height: number
+  weight: number
+  age: number
   timestamp: string
   mutual?: boolean
 }
@@ -39,27 +42,27 @@ const FAVORITE_USERS: FavoriteUser[] = [
 ]
 
 const FOOTPRINTS_FROM_OTHERS: Footprint[] = [
-  { id: '1',  username: 'Ryo',   avatarGradient: { from: '#F4A261', to: '#E76F51' }, photoId: '5', timestamp: '10分前' },
-  { id: '2',  username: 'Hiro',  avatarGradient: { from: '#2A9D8F', to: '#264653' }, photoId: '6', timestamp: '1時間前' },
-  { id: '3',  username: 'Sho',   avatarGradient: { from: '#4CC9F0', to: '#4361EE' }, photoId: '4', timestamp: '2時間前' },
-  { id: '4',  username: 'Yuki',  avatarGradient: { from: '#F72585', to: '#7209B7' }, photoId: '3', timestamp: '3時間前' },
-  { id: '5',  username: 'Ken',   avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, photoId: '7', timestamp: '5時間前' },
-  { id: '6',  username: 'Daiki', avatarGradient: { from: '#F4A261', to: '#E76F51' }, photoId: '2', timestamp: '昨日' },
-  { id: '7',  username: 'Masa',  avatarGradient: { from: '#2A9D8F', to: '#264653' }, photoId: '8',  timestamp: '昨日' },
-  { id: '8',  username: 'Taro',  avatarGradient: { from: '#4CC9F0', to: '#4361EE' }, photoId: '9',  timestamp: '2日前' },
-  { id: '9',  username: 'Jun',   avatarGradient: { from: '#F72585', to: '#7209B7' }, photoId: '10', timestamp: '2日前' },
-  { id: '10', username: 'Shin',  avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, photoId: '11', timestamp: '3日前' },
+  { id: '1',  username: 'Ryo',   avatarGradient: { from: '#F4A261', to: '#E76F51' }, photoId: '5',  height: 172, weight: 63, age: 27, timestamp: '10分前' },
+  { id: '2',  username: 'Hiro',  avatarGradient: { from: '#2A9D8F', to: '#264653' }, photoId: '6',  height: 180, weight: 75, age: 33, timestamp: '1時間前' },
+  { id: '3',  username: 'Sho',   avatarGradient: { from: '#4CC9F0', to: '#4361EE' }, photoId: '4',  height: 168, weight: 58, age: 24, timestamp: '2時間前' },
+  { id: '4',  username: 'Yuki',  avatarGradient: { from: '#F72585', to: '#7209B7' }, photoId: '3',  height: 175, weight: 67, age: 29, timestamp: '3時間前' },
+  { id: '5',  username: 'Ken',   avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, photoId: '7',  height: 173, weight: 62, age: 26, timestamp: '5時間前' },
+  { id: '6',  username: 'Daiki', avatarGradient: { from: '#F4A261', to: '#E76F51' }, photoId: '2',  height: 170, weight: 60, age: 25, timestamp: '昨日' },
+  { id: '7',  username: 'Masa',  avatarGradient: { from: '#2A9D8F', to: '#264653' }, photoId: '8',  height: 176, weight: 68, age: 30, timestamp: '昨日' },
+  { id: '8',  username: 'Taro',  avatarGradient: { from: '#4CC9F0', to: '#4361EE' }, photoId: '9',  height: 169, weight: 61, age: 23, timestamp: '2日前' },
+  { id: '9',  username: 'Jun',   avatarGradient: { from: '#F72585', to: '#7209B7' }, photoId: '10', height: 174, weight: 66, age: 28, timestamp: '2日前' },
+  { id: '10', username: 'Shin',  avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, photoId: '11', height: 177, weight: 70, age: 32, timestamp: '3日前' },
 ]
 
 const FOOTPRINTS_FROM_ME: Footprint[] = [
-  { id: '1', username: 'Kenji',   avatarGradient: { from: '#2A9D8F', to: '#264653' }, photoId: '2', timestamp: '20分前', mutual: true },
-  { id: '2', username: 'Takashi', avatarGradient: { from: '#F72585', to: '#7209B7' }, photoId: '7', timestamp: '1時間前', mutual: false },
-  { id: '3', username: 'Ryota',   avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, photoId: '5', timestamp: '2時間前', mutual: true },
-  { id: '4', username: 'Naoto',   avatarGradient: { from: '#4CC9F0', to: '#4361EE' }, photoId: '3', timestamp: '4時間前', mutual: false },
-  { id: '5', username: 'Kota',    avatarGradient: { from: '#F4A261', to: '#E76F51' }, photoId: '12', timestamp: '昨日', mutual: false },
-  { id: '6', username: 'Shun',    avatarGradient: { from: '#2A9D8F', to: '#264653' }, photoId: '13', timestamp: '昨日', mutual: true },
-  { id: '7', username: 'Ren',     avatarGradient: { from: '#F72585', to: '#7209B7' }, photoId: '14', timestamp: '2日前', mutual: false },
-  { id: '8', username: 'Yuto',    avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, photoId: '15', timestamp: '3日前', mutual: false },
+  { id: '1', username: 'Kenji',   avatarGradient: { from: '#2A9D8F', to: '#264653' }, photoId: '2',  height: 170, weight: 60, age: 25, timestamp: '20分前', mutual: true },
+  { id: '2', username: 'Takashi', avatarGradient: { from: '#F72585', to: '#7209B7' }, photoId: '7',  height: 178, weight: 70, age: 30, timestamp: '1時間前', mutual: false },
+  { id: '3', username: 'Ryota',   avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, photoId: '5',  height: 172, weight: 63, age: 27, timestamp: '2時間前', mutual: true },
+  { id: '4', username: 'Naoto',   avatarGradient: { from: '#4CC9F0', to: '#4361EE' }, photoId: '3',  height: 175, weight: 67, age: 29, timestamp: '4時間前', mutual: false },
+  { id: '5', username: 'Kota',    avatarGradient: { from: '#F4A261', to: '#E76F51' }, photoId: '12', height: 171, weight: 64, age: 26, timestamp: '昨日', mutual: false },
+  { id: '6', username: 'Shun',    avatarGradient: { from: '#2A9D8F', to: '#264653' }, photoId: '13', height: 176, weight: 68, age: 31, timestamp: '昨日', mutual: true },
+  { id: '7', username: 'Ren',     avatarGradient: { from: '#F72585', to: '#7209B7' }, photoId: '14', height: 169, weight: 59, age: 23, timestamp: '2日前', mutual: false },
+  { id: '8', username: 'Yuto',    avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, photoId: '15', height: 174, weight: 65, age: 28, timestamp: '3日前', mutual: false },
 ]
 
 function Avatar({
@@ -231,7 +234,8 @@ function FootprintItem({ fp, direction }: { fp: Footprint; direction: '相手か
             </span>
           )}
         </div>
-        <p className="text-xs text-gray-500">
+        <p className="text-sm text-gray-400">{fp.height}cm / {fp.weight}kg / {fp.age}歳</p>
+        <p className="text-xs text-gray-400">
           {direction === '相手から'
             ? 'あなたのプロフィールを見ました'
             : 'プロフィールを見ました'}

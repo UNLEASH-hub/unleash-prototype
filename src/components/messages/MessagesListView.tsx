@@ -17,12 +17,9 @@ function PersonPlaceholder() {
 }
 
 function ConvAvatar({ conv }: { conv: Conversation }) {
-  if (conv.hasPhoto && conv.photoGradient) {
+  if (conv.photoId) {
     return (
-      <div
-        className="absolute inset-0"
-        style={{ background: `linear-gradient(135deg, ${conv.photoGradient.from}, ${conv.photoGradient.to})` }}
-      />
+      <img src={`/images/users/${conv.photoId}.jpg`} alt="" className="absolute inset-0 h-full w-full object-cover" />
     )
   }
   if (conv.photoGradient) {

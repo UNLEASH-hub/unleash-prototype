@@ -5,6 +5,7 @@ export type Conversation = {
   weight: number
   age: number
   hasPhoto: boolean
+  photoId?: string
   photoGradient?: { from: string; to: string }
   lastMessage: string
   timestamp: string
@@ -34,7 +35,7 @@ export const CONVERSATIONS: Conversation[] = [
     id: '1',
     username: '知也',
     height: 175, weight: 65, age: 28,
-    hasPhoto: true,
+    hasPhoto: true, photoId: '1',
     photoGradient: { from: '#F4A261', to: '#E76F51' },
     lastMessage: '今夜、会えますか？',
     timestamp: '12分前',
@@ -44,7 +45,7 @@ export const CONVERSATIONS: Conversation[] = [
     id: '2',
     username: 'Kenji',
     height: 170, weight: 60, age: 25,
-    hasPhoto: false,
+    hasPhoto: true, photoId: '2',
     lastMessage: 'はじめまして！よろしくお願いします',
     timestamp: '45分前',
     unread: true,
@@ -53,7 +54,7 @@ export const CONVERSATIONS: Conversation[] = [
     id: '3',
     username: 'Takashi',
     height: 178, weight: 72, age: 31,
-    hasPhoto: false,
+    hasPhoto: true, photoId: '3',
     lastMessage: 'ありがとうございます！',
     timestamp: '3時間前',
     unread: false,
@@ -62,7 +63,7 @@ export const CONVERSATIONS: Conversation[] = [
     id: '4',
     username: 'Sho',
     height: 168, weight: 58, age: 24,
-    hasPhoto: false,
+    hasPhoto: true, photoId: '4',
     lastMessage: 'よろしくお願いします！',
     timestamp: '昨日',
     unread: false,
@@ -71,7 +72,7 @@ export const CONVERSATIONS: Conversation[] = [
     id: '5',
     username: 'Yuki',
     height: 172, weight: 63, age: 27,
-    hasPhoto: false,
+    hasPhoto: true, photoId: '5',
     lastMessage: 'またお話しましょうね',
     timestamp: '昨日',
     unread: false,
@@ -80,7 +81,7 @@ export const CONVERSATIONS: Conversation[] = [
     id: '6',
     username: 'Hiro',
     height: 180, weight: 75, age: 33,
-    hasPhoto: false,
+    hasPhoto: true, photoId: '6',
     lastMessage: 'こちらこそよろしくです！',
     timestamp: '2日前',
     unread: false,

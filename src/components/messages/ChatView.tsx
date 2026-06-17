@@ -75,10 +75,11 @@ function MessageLines({ text }: { text: string }) {
 type Props = {
   conversationId: string
   username: string
+  photoId?: string
   avatarGradient?: { from: string; to: string }
 }
 
-export function ChatView({ conversationId, username, avatarGradient }: Props) {
+export function ChatView({ conversationId, username, photoId, avatarGradient }: Props) {
   const [input, setInput] = useState('')
   const [messages, setMessages] = useState<Message[]>(
     MESSAGES_BY_ID[conversationId] ?? [
@@ -106,6 +107,19 @@ export function ChatView({ conversationId, username, avatarGradient }: Props) {
   const avatarStyle = avatarGradient
     ? { background: `linear-gradient(135deg, ${avatarGradient.from}, ${avatarGradient.to})` }
     : { background: '#4ECDC4' }
+
+  function OtherAvatar() {
+    if (photoId) {
+      return (
+        <Link href={`/users/${conversationId}`} className="h-8 w-8 flex-shrink-0 overflow-hidden rounded-lg">
+          <img src={`/images/users/${photoId}.jpg`} alt="" className="h-full w-full object-cover" />
+        </Link>
+      )
+    }
+    return (
+      <Link href={`/users/${conversationId}`} className="h-8 w-8 flex-shrink-0 rounded-lg" style={avatarStyle} />
+    )
+  }
 
   return (
     <div className="flex h-screen flex-col bg-gray-100">
@@ -153,7 +167,7 @@ export function ChatView({ conversationId, username, avatarGradient }: Props) {
             ) : (
               /* 受信 (左寄せ) */
               <div className="mb-4 flex items-end gap-2">
-                <Link href={`/users/${conversationId}`} className="h-8 w-8 flex-shrink-0 rounded-full" style={avatarStyle} />
+                <OtherAvatar />
                 <div>
                   <div className="max-w-[220px] rounded-2xl rounded-tl-sm bg-white px-4 py-2.5 text-sm text-gray-800 shadow-sm">
                     <MessageLines text={msg.text} />
