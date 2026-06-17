@@ -141,7 +141,7 @@ function TypeBadge({ type }: { type: ActionNotif['type'] }) {
 
 function ActionNotificationItem({ notif, isVIP }: { notif: ActionNotif; isVIP: boolean }) {
   const router = useRouter()
-  const locked = !isVIP && notif.type !== 'message' && notif.type !== 'review' && notif.username === null
+  const locked = !isVIP && notif.type !== 'message' && notif.type !== 'review'
   const displayName = isVIP ? notif.username : null
 
   const isReview = notif.type === 'review'
