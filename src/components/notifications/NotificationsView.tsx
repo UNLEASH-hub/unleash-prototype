@@ -45,10 +45,10 @@ const FOOTPRINTS_FROM_OTHERS: Footprint[] = [
   { id: '4',  username: 'Yuki',  avatarGradient: { from: '#F72585', to: '#7209B7' }, photoId: '3', timestamp: '3時間前' },
   { id: '5',  username: 'Ken',   avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, photoId: '7', timestamp: '5時間前' },
   { id: '6',  username: 'Daiki', avatarGradient: { from: '#F4A261', to: '#E76F51' }, photoId: '2', timestamp: '昨日' },
-  { id: '7',  username: 'Masa',  avatarGradient: { from: '#2A9D8F', to: '#264653' }, timestamp: '昨日' },
-  { id: '8',  username: 'Taro',  avatarGradient: { from: '#4CC9F0', to: '#4361EE' }, timestamp: '2日前' },
-  { id: '9',  username: 'Jun',   avatarGradient: { from: '#F72585', to: '#7209B7' }, timestamp: '2日前' },
-  { id: '10', username: 'Shin',  avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, timestamp: '3日前' },
+  { id: '7',  username: 'Masa',  avatarGradient: { from: '#2A9D8F', to: '#264653' }, photoId: '8',  timestamp: '昨日' },
+  { id: '8',  username: 'Taro',  avatarGradient: { from: '#4CC9F0', to: '#4361EE' }, photoId: '9',  timestamp: '2日前' },
+  { id: '9',  username: 'Jun',   avatarGradient: { from: '#F72585', to: '#7209B7' }, photoId: '10', timestamp: '2日前' },
+  { id: '10', username: 'Shin',  avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, photoId: '11', timestamp: '3日前' },
 ]
 
 const FOOTPRINTS_FROM_ME: Footprint[] = [
@@ -56,10 +56,10 @@ const FOOTPRINTS_FROM_ME: Footprint[] = [
   { id: '2', username: 'Takashi', avatarGradient: { from: '#F72585', to: '#7209B7' }, photoId: '7', timestamp: '1時間前', mutual: false },
   { id: '3', username: 'Ryota',   avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, photoId: '5', timestamp: '2時間前', mutual: true },
   { id: '4', username: 'Naoto',   avatarGradient: { from: '#4CC9F0', to: '#4361EE' }, photoId: '3', timestamp: '4時間前', mutual: false },
-  { id: '5', username: 'Kota',    avatarGradient: { from: '#F4A261', to: '#E76F51' }, timestamp: '昨日', mutual: false },
-  { id: '6', username: 'Shun',    avatarGradient: { from: '#2A9D8F', to: '#264653' }, timestamp: '昨日', mutual: true },
-  { id: '7', username: 'Ren',     avatarGradient: { from: '#F72585', to: '#7209B7' }, timestamp: '2日前', mutual: false },
-  { id: '8', username: 'Yuto',    avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, timestamp: '3日前', mutual: false },
+  { id: '5', username: 'Kota',    avatarGradient: { from: '#F4A261', to: '#E76F51' }, photoId: '12', timestamp: '昨日', mutual: false },
+  { id: '6', username: 'Shun',    avatarGradient: { from: '#2A9D8F', to: '#264653' }, photoId: '13', timestamp: '昨日', mutual: true },
+  { id: '7', username: 'Ren',     avatarGradient: { from: '#F72585', to: '#7209B7' }, photoId: '14', timestamp: '2日前', mutual: false },
+  { id: '8', username: 'Yuto',    avatarGradient: { from: '#8338EC', to: '#3A0CA3' }, photoId: '15', timestamp: '3日前', mutual: false },
 ]
 
 function Avatar({
